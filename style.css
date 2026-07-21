@@ -1,0 +1,1234 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100dvh;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  background-color: #f3ffeb;
+  display: flex;
+  cursor: pointer;
+  background-size: 10px 10px;
+  overflow: hidden;
+  .invitacion {
+    opacity: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .invitacion {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
+.sello {
+  width: 90px;
+  height: 90px;
+  background-color: #800020; /* Color borgoña */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 9px rgba(0, 0, 0, 0.5); /* Sombra para el sello */
+  transition: opacity 1s ease;
+}
+
+.sello img {
+  width: 137px;
+  height: 115px;
+}
+
+.sello .tooltip {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.614);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  opacity: 1;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.sello .tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.614) transparent transparent transparent;
+}
+
+.puerta {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  transition: transform 1s ease;
+  box-shadow: 2px 0 5px rgb(0, 0, 0);
+  background-image:
+    linear-gradient(rgba(251, 185, 43, 0.312), rgba(255, 218, 154, 0.412)),
+    url("assets/texture-f5af94d3.png");
+  background-size: cover;
+}
+
+.puerta.izquierda {
+  left: 0;
+  transform-origin: left;
+}
+
+.puerta.derecha {
+  right: 0;
+  transform-origin: right;
+  box-shadow: -7px 0 8px rgba(0, 0, 0, 0.3); /* Sombra entre las puertas */
+}
+
+.envelope.abierto .puerta.izquierda {
+  transform: rotateY(-90deg);
+}
+
+.envelope.abierto .puerta.derecha {
+  transform: rotateY(90deg);
+}
+
+.envelope.abierto .sello {
+  opacity: 0;
+}
+
+.envelope.abierto .invitacion {
+  opacity: 1;
+}
+
+.envelope.abierto {
+  cursor: default;
+  overflow: auto;
+}
+
+.invitacion {
+  transition: all 4s ease;
+  overflow-x: hidden;
+}
+
+.portada {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: center;
+
+  overflow: hidden;
+
+  background-image:
+    linear-gradient(rgba(24, 0, 52, 0.571), rgba(140, 191, 95, 0.292)),
+    url("assets/fondo.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.titulo {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 40px 20px;
+  animation: aparecerTitulo 2s ease forwards;
+}
+
+/* Texto superior */
+.subtitulo {
+  display: block;
+  font-family: "Italiana", serif;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: #8d6b3f;
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+/* Titulo principal */
+
+.titulo h1 {
+  margin: 0;
+  font-family: "Italiana", serif;
+  font-size: clamp(3.9rem, 12vw, 6rem);
+  line-height: 0.95;
+  font-weight: 400;
+  color: #c8a45d;
+  background: linear-gradient(180deg, #f8e7a8, #c79b45);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 10px 30px rgba(120, 70, 150, 0.25);
+}
+
+/* Línea decorativa */
+
+.linea {
+  position: relative;
+  width: 220px;
+  height: 1px;
+  margin: 35px auto;
+  background: linear-gradient(90deg, transparent, #c8a45d, transparent);
+}
+
+.linea::before {
+  content: "✦";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff8ef00;
+  padding: 0 15px;
+  color: #c8a45d;
+  font-size: 30px;
+}
+
+/* Nombres */
+
+.titulo p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3rem, 10vw, 5rem);
+  color: #ffffed;
+  text-shadow: 0 5px 15px rgba(178, 154, 0, 0.723);
+}
+
+/* & elegante */
+
+.y {
+  font-family: "Italiana", serif;
+  color: #c8a45d;
+  font-size: 55px;
+  font-weight: 300;
+}
+
+/* Adornos flotantes */
+
+.titulo::before {
+  content: "✧";
+  position: absolute;
+  top: -20px;
+  left: 10%;
+  font-size: 50px;
+  color: #d8b56b;
+  animation: flotar 4s ease-in-out infinite;
+}
+
+.titulo::after {
+  content: "✧";
+  position: absolute;
+  bottom: -30px;
+  right: 12%;
+  font-size: 50px;
+  color: #d8b56b;
+  animation: flotar 5s ease-in-out infinite;
+}
+
+/* Animaciones */
+
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translateY(0);
+
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translateY(-20px);
+
+    opacity: 1;
+  }
+}
+
+@keyframes aparecerTitulo {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes entrada {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =====================================
+   CONTADOR - CUENTO DE HADAS ELEGANTE
+===================================== */
+
+.contador {
+  position: relative;
+  width: 90%;
+  margin: 70px auto 50px;
+  padding: 45px 20px;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.75),
+    rgba(250, 242, 255, 0.65)
+  );
+  border-radius: 35px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 20px 50px rgba(100, 70, 140, 0.15);
+  overflow: visible;
+}
+
+/* Brillo superior */
+
+.contador::before {
+  content: "✦";
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 45px;
+  color: #d4af37;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+}
+
+/* Partículas inferiores */
+
+/* ======================
+   FECHA
+====================== */
+
+.fecha {
+  font-family: "Italiana", serif;
+  font-size: clamp(2.5rem, 6vw, 3.2rem);
+  letter-spacing: 5px;
+  color: #b28a42;
+  margin-bottom: 15px;
+}
+
+/* ======================
+   TEXTO
+====================== */
+
+.texto__fecha {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  color: #b28a42;
+  margin-bottom: 35px;
+}
+
+/* ======================
+   TABLA
+====================== */
+
+.contador table {
+  width: 100%;
+  border-spacing: 15px;
+}
+
+/* ======================
+   CAJAS
+====================== */
+
+.contador td {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 25px;
+  padding: 20px 10px;
+  box-shadow: 0 15px 30px rgba(130, 90, 170, 0.12);
+}
+
+/* ======================
+   NUMEROS
+====================== */
+
+.contador td span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #e5c77a, #b98b32);
+  color: white;
+  font-family: "Mono Space", serif;
+  font-size: 2rem;
+  box-shadow: 0 10px 25px rgba(180, 130, 50, 0.35);
+}
+
+/* ======================
+   TEXTO DIAS HORAS
+====================== */
+
+.label {
+  margin-top: 15px;
+  font-family: "Italiana", serif;
+  color: #80613a;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ======================
+   HADAS
+====================== */
+
+.hada {
+  position: absolute;
+  width: 90px;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 15px rgba(255, 220, 150, 0.9));
+  animation: flotarHada 5s ease-in-out infinite;
+  z-index: 5;
+}
+
+.hada1 {
+  width: 150px;
+  top: -45px;
+  left: -35px;
+}
+
+.hada2 {
+  bottom: -105px;
+  right: -110px;
+  width: 75px;
+  animation-delay: 2s;
+  width: 250px;
+}
+
+@keyframes flotarHada {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+/* ==================================
+   BIENVENIDA - CUENTO DE HADAS
+================================== */
+
+.bienvenida {
+  position: relative;
+
+  width: 90%;
+
+  margin: 70px auto;
+
+  padding: 45px 25px;
+
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.8),
+    rgba(247, 236, 255, 0.7)
+  );
+
+  border-radius: 35px;
+
+  border: 1px solid rgba(212, 175, 55, 0.25);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 20px 50px rgba(120, 80, 160, 0.15);
+
+  animation: aparecerCarta 1.5s ease;
+}
+
+/* Estrella superior */
+
+.adorno-magia {
+  font-size: 45px;
+
+  color: #d4af37;
+
+  margin-bottom: 10px;
+
+  animation: brilloMagico 3s infinite;
+}
+
+/* Icono */
+
+.icono-bienvenida svg {
+  width: 55px;
+
+  height: 55px;
+
+  fill: #d4af37;
+
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5));
+
+  margin-bottom: 20px;
+}
+
+/* Titulo */
+
+.bienvenida h2 {
+  font-family: "Italiana", serif;
+
+  font-size: clamp(2rem, 6vw, 3rem);
+
+  font-weight: 400;
+
+  color: #b28a42;
+
+  margin-bottom: 25px;
+}
+
+/* Texto */
+
+.bienvenida p {
+  font-family: "Italiana", serif;
+
+  font-size: 1.2rem;
+
+  line-height: 1.8;
+
+  color: #6c5575;
+
+  margin: 0;
+}
+
+/* Decoración inferior */
+
+.bienvenida::after {
+  content: "✧  ✦  ✧";
+
+  display: block;
+
+  margin-top: 25px;
+
+  letter-spacing: 15px;
+
+  color: #d4af37;
+}
+
+/* Animaciones */
+
+@keyframes brilloMagico {
+  0%,
+  100% {
+    opacity: 0.6;
+
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform: scale(1.15);
+  }
+}
+
+@keyframes aparecerCarta {
+  from {
+    opacity: 0;
+
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* =====================================
+   AGRADECIMIENTO - CRISTAL MAGICO
+===================================== */
+
+.agradecimiento {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  margin: 80px 0;
+}
+
+.padres {
+  width: 90%;
+
+  position: relative;
+
+  animation: aparecerCarta 1.5s ease;
+}
+
+/* CARD PRINCIPAL */
+
+.card1 {
+  position: relative;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  border-radius: 35px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.85),
+    rgba(247, 236, 255, 0.75)
+  );
+
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(212, 175, 55, 0.25);
+
+  box-shadow: 0 20px 50px rgba(120, 80, 160, 0.15);
+}
+
+/* Encabezado */
+
+.card-header1 {
+  padding: 45px 20px 15px;
+
+  text-align: center;
+
+  background: transparent;
+
+  font-family: "Italiana", serif;
+
+  font-size: clamp(1.4rem, 5vw, 2rem);
+
+  letter-spacing: 5px;
+
+  color: #b28a42;
+}
+
+/* Cuerpo */
+
+.card-body1 {
+  padding: 20px 35px 45px;
+
+  text-align: center;
+}
+
+.blockquote {
+  margin: 0;
+}
+
+.blockquote p {
+  font-family: "Italiana", serif;
+
+  font-size: 1.25rem;
+
+  line-height: 1.9;
+
+  color: #d4af37;
+}
+
+/* Firma */
+
+.blockquote-footer {
+  margin-top: 35px;
+
+  font-family: "Great Vibes", cursive;
+
+  font-size: 2.5rem;
+
+  color: #d4af37 !important;
+}
+
+.blockquote-footer cite {
+  display: block;
+
+  margin-top: 10px;
+
+  font-family: "Italiana", serif;
+
+  font-size: 1.2rem;
+
+  letter-spacing: 2px;
+
+  font-style: normal;
+
+  color: #b28a42;
+}
+
+/* Estrella superior */
+
+.card1::before {
+  content: "✦";
+
+  position: absolute;
+
+  top: 20px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-size: 45px;
+
+  color: #d4af37;
+
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+}
+
+/* Brillos laterales */
+
+.card1::after {
+  content: "✧   ✦   ✧";
+
+  position: absolute;
+
+  bottom: 20px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  color: #d4af37;
+
+  letter-spacing: 15px;
+
+  opacity: 0.7;
+}
+/* =====================================
+   ITINERARIO - CAMINO MAGICO
+===================================== */
+
+section {
+  position: relative;
+}
+
+/* TITULO */
+
+.intinerario {
+  margin-top: 80px;
+
+  text-align: center;
+
+  position: relative;
+}
+
+.intinerario p {
+  font-family: "Great Vibes", cursive;
+
+  font-size: 4rem;
+
+  color: #d4af37;
+
+  margin: 0;
+}
+
+.intinerario::after {
+  content: "✦  ✧  ✦";
+
+  display: block;
+
+  color: #d4af37;
+
+  letter-spacing: 15px;
+
+  font-size: 25px;
+
+  margin-top: 10px;
+}
+
+/* CONTENEDOR */
+
+.container.py-5 {
+  padding-top: 50px !important;
+}
+
+/* LINEA DEL TIEMPO */
+
+.main-timeline-2 {
+  position: relative;
+}
+
+.main-timeline-2::after {
+  content: "";
+
+  position: absolute;
+
+  width: 2px;
+
+  background: linear-gradient(
+    to bottom,
+
+    transparent,
+    #d4af37,
+    transparent
+  );
+
+  top: 0;
+
+  bottom: 0;
+
+  left: 50%;
+}
+
+/* TARJETA */
+
+.timeline-2 {
+  position: relative;
+
+  width: 50%;
+}
+
+.right-2 {
+  left: 50%;
+
+  padding-left: 40px;
+}
+
+.card {
+  border: none !important;
+
+  overflow: hidden;
+
+  border-radius: 35px !important;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(247, 236, 255, 0.75)
+  );
+
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 20px 50px rgba(120, 80, 160, 0.18) !important;
+}
+
+/* IMAGEN */
+
+.card img {
+  height: 280px;
+
+  width: 100%;
+
+  object-fit: cover;
+
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+/* CONTENIDO */
+
+.card-body {
+  text-align: center;
+}
+
+.card h1 {
+  font-family: "Great Vibes", cursive;
+
+  font-size: 3.5rem;
+
+  font-weight: 400 !important;
+
+  color: #d4af37;
+}
+
+.card small {
+  display: block;
+
+  font-family: "Italiana", serif;
+
+  font-size: 1.4rem;
+
+  color: #b28a42;
+
+  letter-spacing: 3px;
+
+  margin-bottom: 20px;
+}
+
+.card p {
+  font-family: "Italiana", serif;
+
+  font-size: 1.1rem;
+
+  line-height: 1.8;
+
+  color: #6c5575 !important;
+}
+
+/* ESTRELLA DEL CAMINO */
+
+.timeline-2::after {
+  content: "✦";
+
+  position: absolute;
+
+  width: 45px;
+
+  height: 45px;
+
+  right: -23px;
+
+  top: 15px;
+
+  background: linear-gradient(135deg, #e5c77a, #b98b32);
+
+  color: white;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 22px;
+
+  box-shadow: 0 10px 25px rgba(180, 130, 50, 0.4);
+
+  z-index: 2;
+}
+
+.right-2::after {
+  left: -22px;
+}
+
+/* BOTON */
+
+.card button {
+  border: none !important;
+
+  border-radius: 50px !important;
+
+  padding: 14px 35px !important;
+
+  font-family: "Italiana", serif;
+
+  letter-spacing: 2px;
+
+  color: white !important;
+
+  background: linear-gradient(135deg, #d8b56b, #b98b32);
+
+  box-shadow: 0 10px 25px rgba(180, 130, 50, 0.35);
+
+  transition: 0.3s;
+}
+
+.card button:hover {
+  transform: translateY(-5px);
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 600px) {
+  .main-timeline-2::after {
+    left: 25px;
+  }
+
+  .timeline-2 {
+    width: 100%;
+
+    padding-left: 60px;
+  }
+
+  .right-2 {
+    left: 0;
+  }
+
+  .timeline-2::after {
+    left: 3px;
+  }
+
+  .card h1 {
+    font-size: 3rem;
+  }
+}
+
+/* =====================================
+   MESA DE REGALOS - COFRE MAGICO
+===================================== */
+
+.mesa__regalos {
+  position: relative;
+
+  width: 90%;
+
+  margin: 80px auto 30px;
+
+  padding: 45px 25px;
+
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.85),
+    rgba(247, 236, 255, 0.75)
+  );
+
+  backdrop-filter: blur(10px);
+
+  border-radius: 35px;
+
+  border: 1px solid rgba(212, 175, 55, 0.25);
+
+  box-shadow: 0 20px 50px rgba(120, 80, 160, 0.15);
+}
+
+/* brillo superior */
+
+.mesa__regalos::before {
+  content: "♛";
+
+  position: absolute;
+
+  top: -25px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 55px;
+
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, #e5c77a, #b98b32);
+
+  color: white;
+
+  font-size: 25px;
+}
+
+/* titulo */
+
+.mesa__regalos h1 {
+  font-family: "Italiana", serif;
+
+  font-size: clamp(2rem, 6vw, 3rem);
+
+  font-weight: 400;
+
+  color: #b28a42;
+}
+
+.mesa__regalos i {
+  display: block;
+
+  width: 150px;
+
+  height: 1px;
+
+  margin: 20px auto;
+
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.mesa__regalos p {
+  font-family: "Italiana", serif;
+
+  font-size: 1.15rem;
+
+  line-height: 1.8;
+
+  color: #6c5575;
+}
+
+/* =====================================
+   CODIGO DE VESTIMENTA - PERGAMINO
+===================================== */
+
+.codigo__vestimenta {
+  position: relative;
+
+  width: 90%;
+
+  margin: 40px auto;
+
+  padding: 45px 25px;
+
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 250, 240, 0.9),
+    rgba(250, 240, 255, 0.75)
+  );
+
+  border-radius: 35px;
+
+  border: 1px solid rgba(212, 175, 55, 0.3);
+
+  box-shadow: 0 20px 50px rgba(120, 80, 160, 0.15);
+}
+
+.codigo__vestimenta::before {
+  content: "✧";
+
+  position: absolute;
+
+  top: -25px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-size: 45px;
+
+  color: #d4af37;
+}
+
+.codigo__vestimenta h1 {
+  font-family: "Italiana", serif;
+
+  font-size: clamp(2rem, 6vw, 3rem);
+
+  color: #b28a42;
+
+  font-weight: 400;
+}
+
+.codigo__vestimenta i {
+  display: block;
+
+  width: 150px;
+
+  height: 1px;
+
+  margin: 20px auto;
+
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.codigo__vestimenta p {
+  font-family: "Italiana", serif;
+
+  font-size: 1.15rem;
+
+  line-height: 1.8;
+
+  color: #6c5575;
+}
+
+/* =====================================
+   CONFIRMACION FINAL
+===================================== */
+
+.confirmar {
+  width: 90%;
+
+  margin: 70px auto;
+
+  padding: 40px 25px;
+
+  text-align: center;
+}
+
+.confirmar span {
+  display: block;
+
+  font-family: "Great Vibes", cursive;
+
+  font-size: 3.5rem;
+
+  color: #b28a42;
+
+  margin-bottom: 15px;
+}
+
+.confirmar p {
+  font-family: "Italiana", serif;
+
+  font-size: 1.2rem;
+
+  color: #6c5575;
+
+  line-height: 1.7;
+}
+
+.confirmarBtn {
+  margin-top: 25px;
+
+  padding: 15px 35px;
+
+  border: none;
+
+  border-radius: 50px;
+
+  cursor: pointer;
+
+  font-family: "Italiana", serif;
+
+  font-size: 1.1rem;
+
+  letter-spacing: 2px;
+
+  color: white;
+
+  background: linear-gradient(135deg, #d8b56b, #b98b32);
+
+  box-shadow: 0 10px 25px rgba(180, 130, 50, 0.35);
+
+  transition: 0.3s;
+}
+
+.confirmarBtn:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 15px 35px rgba(180, 130, 50, 0.5);
+}
+
+/* Brillos generales */
+
+.mesa__regalos::after,
+.codigo__vestimenta::after {
+  content: "✧  ✦  ✧";
+
+  display: block;
+
+  margin-top: 25px;
+
+  color: #d4af37;
+
+  letter-spacing: 15px;
+}
